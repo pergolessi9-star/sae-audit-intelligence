@@ -203,19 +203,23 @@ var btn=document.getElementById('submitBtn');
 var form=event.target;
 btn.disabled=true;btn.textContent='Enviando...';
 var fd=new FormData(form);
-var nombre=fd.get('nombre');
-var email=fd.get('email');
-var org=fd.get('organizacion');
-var cargo=fd.get('cargo')||'No indicado';
-var sector=fd.get('sector')||'No indicado';
-var mensaje=fd.get('mensaje')||'No indicado';
-var body='Nueva solicitud de demo SAE\n\nNombre: '+nombre+'\nEmail: '+email+'\nOrganizacion: '+org+'\nCargo: '+cargo+'\nSector: '+sector+'\n\nMensaje:\n'+mensaje;
-window.location.href='mailto:pergolesi9@gmail.com?subject='+encodeURIComponent('Solicitud demo SAE - '+org)+'&body='+encodeURIComponent(body);
-setTimeout(function(){
+fetch('https://formspree.io/f/myeyoowk',{
+method:'POST',
+body:fd,
+headers:{'Accept':'application/json'}
+}).then(function(r){
+if(r.ok){
 document.getElementById('contactFormWrap').style.display='none';
 document.getElementById('contactSuccess').classList.add('active');
 form.reset();
-},600);
+}else{
+alert('Hubo un problema al enviar. Escríbeme directamente a pergolessi9@gmail.com');
+btn.disabled=false;btn.textContent='Enviar solicitud →';
+}
+}).catch(function(){
+alert('Error de conexión. Escríbeme directamente a pergolessi9@gmail.com');
+btn.disabled=false;btn.textContent='Enviar solicitud →';
+});
 }
 </script>
 </body></html>
