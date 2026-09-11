@@ -202,7 +202,7 @@ event.preventDefault();
 var btn=document.getElementById('submitBtn');
 var form=event.target;
 btn.disabled=true;btn.textContent='Enviando...';
-var fd=new FormData(form);
+var fd=new FormData(form);fd.set('_subject','Nueva solicitud SAE de '+(fd.get('organizacion')||'cliente'));
 fetch('https://formspree.io/f/myeyoowk',{
 method:'POST',
 body:fd,
