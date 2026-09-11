@@ -46,7 +46,7 @@ label{display:block;color:var(--muted);font-size:11px;margin:5px 0}input,select,
 <div id="contactFormWrap">
 <h2>Solicitar demo de SAE</h2>
 <div class="sub">Auditoría algorítmica + ciberseguridad para el AI Act y NIS2</div>
-<form id="contactForm" onsubmit="submitContact(event)">
+<form id="contactForm" onsubmit="submitContact(event)"> <input type="hidden" name="_subject" value="Nueva solicitud SAE de {{ organizacion }}" />
 <label>Nombre y apellidos *</label><input type="text" name="nombre" required placeholder="María García López">
 <label>Email corporativo *</label><input type="email" name="email" required placeholder="maria@empresa.com">
 <label>Organización *</label><input type="text" name="organizacion" required placeholder="Nombre de la entidad">
