@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAE Audit Intelligence — Auditoría AI Act + Ciberseguridad</title>
+<meta name="description" content="Plataforma de auditoría algorítmica y ciberseguridad defensiva para el Reglamento Europeo de IA y NIS2. 180 controles. Compliance verificable.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://formspree.io; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'none';">
+<style>
+:root{--bg:#07111d;--side:#091524;--panel:#101d30;--panel2:#152640;--line:#263a5a;--txt:#eff6ff;--muted:#9eb1c9;--cyan:#5fd3ff;--green:#51d39a;--amber:#ffd166;--violet:#aa9cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,#07101c,#0b1625);color:var(--txt);font:16px/1.6 Arial,Helvetica,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+header{padding:22px 0;border-bottom:1px solid var(--line)}
+.logo{font-size:22px;font-weight:900;letter-spacing:-0.5px}
+.logo span{color:var(--cyan)}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:14px}
+.nav a:hover{color:var(--cyan)}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:900;text-decoration:none;cursor:pointer;border:0;font-size:15px;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,#5fd3ff,#51d39a);color:#04131c}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(95,211,255,.4)}
+.btn-secondary{background:transparent;color:var(--txt);border:1px solid var(--line)}
+.btn-secondary:hover{border-color:var(--cyan);color:var(--cyan)}
+
+.hero{padding:80px 0 60px;text-align:center}
+.hero .tag{display:inline-block;background:#0d2030;border:1px solid #28617b;color:#cbeeff;padding:7px 15px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:22px;letter-spacing:0.5px}
+.hero h1{font-size:52px;line-height:1.1;font-weight:900;margin-bottom:20px;letter-spacing:-1.5px}
+.hero h1 span{background:linear-gradient(135deg,#5fd3ff,#51d39a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{font-size:19px;color:var(--muted);max-width:720px;margin:0 auto 34px}
+.hero .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .meta{margin-top:30px;color:var(--muted);font-size:13px}
+.hero .meta strong{color:var(--green)}
+
+.section{padding:70px 0}
+.section h2{font-size:34px;font-weight:900;margin-bottom:14px;text-align:center;letter-spacing:-0.5px}
+.section .lead{text-align:center;color:var(--muted);font-size:17px;max-width:720px;margin:0 auto 50px}
+
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:all .2s}
+.card:hover{border-color:#305496;transform:translateY(-3px)}
+.card h3{font-size:19px;margin-bottom:10px;color:var(--cyan)}
+.card p{color:var(--muted);font-size:14.5px;line-height:1.65}
+
+.problem{background:linear-gradient(180deg,#0c2030,#0b1625);border:1px solid #275a72;border-radius:16px;padding:32px;margin-bottom:40px}
+.problem h3{color:#ffd166;font-size:22px;margin-bottom:14px}
+.problem p{color:#ccecff;font-size:16px;line-height:1.7}
+
+.price{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px;text-align:left;position:relative;transition:all .25s}
+.price:hover{transform:translateY(-4px);border-color:#305496}
+.price.featured{border:2px solid var(--cyan);background:linear-gradient(180deg,#102b40,#0d2030)}
+.price .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#5fd3ff,#51d39a);color:#04131c;font-size:11px;font-weight:900;padding:5px 14px;border-radius:999px;letter-spacing:1px}
+.price h3{font-size:20px;margin-bottom:6px}
+.price .desc{color:var(--muted);font-size:13.5px;margin-bottom:20px;min-height:38px}
+.price .amount{font-size:42px;font-weight:900;color:var(--cyan);letter-spacing:-2px}
+.price .amount small{font-size:14px;color:var(--muted);font-weight:400;letter-spacing:0}
+.price .amount-alt{color:var(--muted);font-size:14px;margin-bottom:22px}
+.price ul{list-style:none;margin:22px 0}
+.price li{padding:9px 0;color:var(--muted);font-size:14.5px;border-bottom:1px solid rgba(38,58,90,.5)}
+.price li:before{content:"✓ ";color:var(--green);font-weight:900;margin-right:8px}
+.price li:last-child{border-bottom:0}
+.price .cta{margin-top:22px;display:block;text-align:center;width:100%}
+
+.cta-final{background:linear-gradient(135deg,#0c2030,#102b40);border:1px solid #275a72;border-radius:20px;padding:60px 40px;text-align:center;margin:60px 0}
+.cta-final h2{font-size:36px;margin-bottom:16px}
+.cta-final p{color:#ccecff;font-size:17px;max-width:640px;margin:0 auto 32px}
+
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:13px;text-align:center}
+footer a{color:var(--cyan);text-decoration:none}
+
+@media(max-width:900px){
+  .hero h1{font-size:36px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .section{padding:50px 0}
+  .section h2{font-size:26px}
+  .price.featured{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">SAE <span>Audit Intelligence</span></div>
+    <div>
+      <a href="#precios">Precios</a>
+      <a href="#producto">Producto</a>
+      <a href="index.html">Ver demo</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="tag">CUMPLIMIENTO AI ACT · NIS2 · AUDITORÍA ALGORÍTMICA</div>
+    <h1>Audita tus sistemas de IA.<br><span>Cumple con el AI Act.</span></h1>
+    <p class="sub">Plataforma integral de auditoría algorítmica y ciberseguridad defensiva para empresas y administraciones públicas. Sin consultores. Sin instalación. Sin sorpresas.</p>
+    <div class="btns">
+      <a href="#precios" class="btn btn-primary">Ver planes →</a>
+      <a href="index.html" class="btn btn-secondary">Probar demo gratis</a>
+    </div>
+    <div class="meta">✅ <strong>180 controles algorítmicos</strong> · ✅ <strong>36 controles cyber</strong> · ✅ <strong>Desde 29 €/mes</strong></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="problem">
+      <h3>⚠️ El AI Act ya está aquí</h3>
+      <p>Desde el 2 de agosto de 2026, cualquier organización que use sistemas de IA en Europa está sujeta a obligaciones de gobernanza, transparencia y supervisión humana. Las sanciones pueden alcanzar <strong>35 millones de euros o el 7% del volumen de negocio</strong>. La mayoría de las empresas no sabe si cumple. Y los consultores tradicionales cobran entre 3.000 € y 15.000 € por una auditoría que, además, no es trazable.</p>
+    </div>
+
+    <h2>¿Qué te ofrece SAE?</h2>
+    <p class="lead">Tres bloques integrados que resuelven el problema completo: detectar, evidenciar, remediar.</p>
+
+    <div class="grid g3">
+      <div class="card">
+        <h3>🏛️ Auditoría algorítmica</h3>
+        <p>180 controles cubriendo AI Act, RGPD, transparencia, explicabilidad, supervisión humana y trazabilidad técnica. Adaptados a banca, sector público y empresas privadas.</p>
+      </div>
+      <div class="card">
+        <h3>🛡️ Ciberseguridad defensiva</h3>
+        <p>36 controles en 6 dominios: activos, identidad, vulnerabilidades, respuesta a incidentes, cadena de suministro y gobernanza de seguridad de IA.</p>
+      </div>
+      <div class="card">
+        <h3>📋 Evidence Ledger</h3>
+        <p>Cada hallazgo queda vinculado a evidencia trazable, contradicciones registradas y acciones correctivas priorizadas. Documentación lista para inspección.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="producto">
+  <div class="wrap">
+    <h2>Diseñado para quien decide</h2>
+    <p class="lead">Tanto si eres un CISO que prepara la próxima auditoría como si eres un DPO que necesita demostrar diligencia ante un regulador.</p>
+
+    <div class="grid g4">
+      <div class="card">
+        <h3>Sin instalación</h3>
+        <p>Funciona en el navegador. Nada que instalar, nada que desplegar, nada que mantener.</p>
+      </div>
+      <div class="card">
+        <h3>Datos bajo control</h3>
+        <p>Modo local: los datos de auditoría viven en tu navegador. Sin telemetría, sin servidores externos.</p>
+      </div>
+      <div class="card">
+        <h3>Adaptado a España</h3>
+        <p>Perfiles específicos para AEAT, banca española y administraciones públicas. Normativa nacional integrada.</p>
+      </div>
+      <div class="card">
+        <h3>Exportable</h3>
+        <p>Informes en JSON, CSV y PDF. Listos para integrar en tu sistema de gestión de compliance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="precios">
+  <div class="wrap">
+    <h2>Planes y precios</h2>
+    <p class="lead">Elige el nivel que necesitas. Sin contratos anuales. Sin costes ocultos. Cancela cuando quieras.</p>
+
+    <div class="grid g4">
+      <div class="price">
+        <h3>Free</h3>
+        <div class="desc">Autoevaluación inicial</div>
+        <div class="amount">0 €<small>/mes</small></div>
+        <div class="amount-alt">Para siempre</div>
+        <ul>
+          <li>Autoevaluación AI Act</li>
+          <li>Clasificación de riesgo básica</li>
+          <li>Informe PDF resumen</li>
+          <li>Soporte por email</li>
+        </ul>
+        <a href="index.html" class="btn btn-secondary cta">Empezar gratis</a>
+      </div>
+
+      <div class="price">
+        <h3>Basic</h3>
+        <div class="desc">Para autónomos y microempresas</div>
+        <div class="amount">29 €<small>/mes</small></div>
+        <div class="amount-alt">Facturación mensual</div>
+        <ul>
+          <li>Todo lo del plan Free</li>
+          <li>Inventario de sistemas IA</li>
+          <li>Clasificación de riesgo completa</li>
+          <li>Documentación básica AI Act</li>
+          <li>Soporte prioritario</li>
+        </ul>
+        <a href="#contacto" class="btn btn-secondary cta">Solicitar acceso</a>
+      </div>
+
+      <div class="price featured">
+        <div class="badge">MÁS POPULAR</div>
+        <h3>Pro</h3>
+        <div class="desc">Para pymes y despachos profesionales</div>
+        <div class="amount">79 €<small>/mes</small></div>
+        <div class="amount-alt">Facturación mensual</div>
+        <ul>
+          <li>Todo lo del plan Basic</li>
+          <li>180 controles algorítmicos</li>
+          <li>36 controles cyber (SAE DEFEND)</li>
+          <li>Evidence Ledger completo</li>
+          <li>Register de contradicciones</li>
+          <li>Exportación a JSON/CSV</li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary cta">Solicitar demo</a>
+      </div>
+
+      <div class="price">
+        <h3>Premium</h3>
+        <div class="desc">Para medianas empresas y sector público</div>
+        <div class="amount">199 €<small>/mes</small></div>
+        <div class="amount-alt">Facturación mensual</div>
+        <ul>
+          <li>Todo lo del plan Pro</li>
+          <li>Auditoría asistida por IA</li>
+          <li>Detección automática de gaps</li>
+          <li>Recomendaciones personalizadas</li>
+          <li>Soporte prioritario 24h</li>
+          <li>Integración con SIEM/GRC</li>
+        </ul>
+        <a href="#contacto" class="btn btn-secondary cta">Solicitar acceso</a>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:44px;color:var(--muted);font-size:14px">
+      ¿Administración pública o gran empresa? <a href="#contacto" style="color:var(--cyan)">Solicita una propuesta personalizada →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contacto">
+  <div class="wrap">
+    <div class="cta-final">
+      <h2>¿Hablamos?</h2>
+      <p>Agenda una demo de 20 minutos. Te muestro SAE con datos sintéticos, sin necesidad de acceder a información sensible de tu organización.</p>
+      <div class="btns" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="mailto:pergolessi9@gmail.com?subject=Solicitud%20demo%20SAE&body=Hola%20Manuel,%0A%0AMe%20interesa%20SAE%20Audit%20Intelligence.%0A%0ANombre:%0AEmpresa:%0ACargo:%0ANecesidad:" class="btn btn-primary">📧 Enviar email directo</a>
+        <a href="index.html" class="btn btn-secondary">Probar la demo primero</a>
+      </div>
+      <p style="margin-top:24px;color:var(--muted);font-size:13px">O contáctame directamente: <a href="mailto:pergolessi9@gmail.com" style="color:var(--cyan)">pergolessi9@gmail.com</a> · +34 641 118 025</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin-bottom:10px"><strong style="color:var(--txt)">SAE Audit Intelligence</strong> · Auditoría algorítmica y ciberseguridad defensiva</p>
+    <p>© 2026 Manuel Gago Fernández · <a href="index.html">Demo</a> · <a href="mailto:pergolessi9@gmail.com">Contacto</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
