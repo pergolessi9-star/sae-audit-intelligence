@@ -12,9 +12,63 @@ label{display:block;color:var(--muted);font-size:11px;margin:5px 0}input,select,
 .item{padding:10px 12px;background:#0c1828;border-left:3px solid var(--cyan);border-radius:8px;margin:7px 0}.ok{border-left-color:var(--green)}.warn{border-left-color:var(--amber)}.bad{border-left-color:var(--red)}.violet{border-left-color:var(--violet)}.progress{height:8px;background:#081321;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--green))}
 .tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:950px}.table th,.table td{padding:9px;border-bottom:1px solid var(--line);vertical-align:top}.table th{font-size:10px;color:var(--muted);text-align:left;background:#101d30;position:sticky;top:0}.footer{font-size:11px;color:var(--muted);margin-top:20px}.domain{background:#0d192a;border:1px solid var(--line);border-radius:11px;padding:12px}
 @media(max-width:1000px){.app{grid-template-columns:1fr}.sidebar{height:auto;position:relative}.nav{display:flex;flex-wrap:wrap}.nav button{width:auto}.g2,.g3,.g4,.g5{grid-template-columns:1fr}main{padding:17px}}
+/* ============ SISTEMA DE CONTACTO ============ */
+.contact-float{position:fixed;bottom:24px;right:24px;background:linear-gradient(135deg,#5fd3ff,#51d39a);color:#04131c;border:none;border-radius:50px;padding:14px 22px;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(95,211,255,.4);z-index:9998;display:flex;align-items:center;gap:8px}
+.contact-float:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(95,211,255,.6)}
+.contact-float.pulse{animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 24px rgba(95,211,255,.4)}50%{box-shadow:0 8px 32px rgba(95,211,255,.8)}}
+.contact-modal{display:none;position:fixed;inset:0;background:rgba(7,17,29,.85);backdrop-filter:blur(8px);z-index:9999;justify-content:center;align-items:center;padding:20px}
+.contact-modal.active{display:flex}
+.contact-box{background:#101d30;border:1px solid #263a5a;border-radius:18px;padding:32px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.5);position:relative}
+.contact-close{position:absolute;top:14px;right:18px;background:transparent;border:none;color:#9eb1c9;font-size:26px;cursor:pointer;line-height:1}
+.contact-close:hover{color:#fff}
+.contact-box h2{margin:0 0 6px 0;color:#5fd3ff;font-size:22px}
+.contact-box .sub{color:#9eb1c9;font-size:13px;margin-bottom:20px}
+.contact-box label{display:block;color:#9eb1c9;font-size:11px;margin:12px 0 6px 0;text-transform:uppercase;font-weight:700}
+.contact-box input,.contact-box select,.contact-box textarea{width:100%;background:#0b1728;color:#eff6ff;border:1px solid #263a5a;border-radius:9px;padding:11px 13px;font-family:inherit;font-size:14px;box-sizing:border-box}
+.contact-box input:focus,.contact-box select:focus,.contact-box textarea:focus{outline:none;border-color:#5fd3ff;box-shadow:0 0 0 3px rgba(95,211,255,.15)}
+.contact-box textarea{min-height:90px;resize:vertical}
+.contact-box .submit{width:100%;background:linear-gradient(135deg,#5fd3ff,#51d39a);color:#04131c;border:none;border-radius:9px;padding:14px;font-size:15px;font-weight:900;cursor:pointer;margin-top:20px}
+.contact-box .submit:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(95,211,255,.4)}
+.contact-direct{margin-top:18px;padding-top:18px;border-top:1px solid #263a5a;font-size:12px;color:#9eb1c9;line-height:1.8}
+.contact-direct a{color:#5fd3ff;text-decoration:none}
+.contact-success{display:none;text-align:center;padding:30px 10px}
+.contact-success.active{display:block}
+.contact-success .check{font-size:56px;margin-bottom:14px}
+.contact-success h3{color:#51d39a;margin:0 0 10px 0;font-size:20px}
+.contact-success p{color:#9eb1c9;font-size:13px}
 </style>
 </head>
-<body>
+<button class="contact-float pulse" onclick="openContactModal()"><span>💬</span> Solicitar demo</button>
+<div id="contactModal" class="contact-modal">
+<div class="contact-box">
+<button class="contact-close" onclick="closeContactModal()">×</button>
+<div id="contactFormWrap">
+<h2>Solicitar demo de SAE</h2>
+<div class="sub">Auditoría algorítmica + ciberseguridad para el AI Act y NIS2</div>
+<form id="contactForm" onsubmit="submitContact(event)">
+<label>Nombre y apellidos *</label><input type="text" name="nombre" required placeholder="María García López">
+<label>Email corporativo *</label><input type="email" name="email" required placeholder="maria@empresa.com">
+<label>Organización *</label><input type="text" name="organizacion" required placeholder="Nombre de la entidad">
+<label>Cargo</label><input type="text" name="cargo" placeholder="CISO, DPO, Chief AI Officer...">
+<label>Sector</label><select name="sector"><option value="">Seleccionar...</option><option>Banca y seguros</option><option>Telecomunicaciones</option><option>Energía</option><option>Administración pública</option><option>Sanidad</option><option>Defensa y seguridad</option><option>Industria</option><option>Tecnología</option><option>Otro</option></select>
+<label>¿Qué necesitas auditar?</label><textarea name="mensaje" placeholder="Sistemas de IA en producción, cumplimiento del AI Act, controles ciber..."></textarea>
+<button type="submit" class="submit" id="submitBtn">Enviar solicitud →</button>
+</form>
+<div class="contact-direct">
+<div>📧 <a href="mailto:pergolesi9@gmail.com">pergolesi9@gmail.com</a></div>
+<div>📱 <a href="tel:+34641118025">+34 641 118 025</a></div>
+</div>
+</div>
+<div id="contactSuccess" class="contact-success">
+<div class="check">✅</div>
+<h3>¡Solicitud enviada!</h3>
+<p>Gracias por tu interés en SAE.<br>Te contactaré en menos de 24 horas.</p>
+<button class="submit" onclick="closeContactModal()" style="margin-top:20px">Cerrar</button>
+</div>
+</div>
+</div>
+ <body>
 <div class="app">
 <aside class="sidebar">
  <div class="logo">SAE <span>+ DEFEND</span></div>
@@ -138,5 +192,30 @@ function renderDashboard(){const av=Object.values(app.algo[app.active]),cv=Objec
 function exportCase(){const p={product:"SAE Audit Intelligence",version:"0.3",entity:app.entity,active_profile:app.active,algorithmic_results:app.algo,cyber_results:app.cyber,contradictions:app.contradictions,exported_at:new Date().toISOString()};const b=new Blob([JSON.stringify(p,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="SAE_v0.3_"+app.entity.replaceAll(" ","_")+".json";a.click();URL.revokeObjectURL(a.href)}
 function importCase(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);app.entity=d.entity||"Imported";app.active=d.active_profile||"santander";app.algo=d.algorithmic_results||{"santander":{},"aeat":{}};app.cyber=d.cyber_results||{};app.contradictions=d.contradictions||[];save();init();alert("Integrated case imported.")}catch(err){alert("Invalid file")}};r.readAsText(f)}
 init();
+/* ============ SISTEMA DE CONTACTO ============ */
+function openContactModal(){document.getElementById('contactModal').classList.add('active');document.body.style.overflow='hidden';}
+function closeContactModal(){document.getElementById('contactModal').classList.remove('active');document.body.style.overflow='';}
+document.getElementById('contactModal').addEventListener('click',function(e){if(e.target===this)closeContactModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeContactModal();});
+function submitContact(event){
+event.preventDefault();
+var btn=document.getElementById('submitBtn');
+var form=event.target;
+btn.disabled=true;btn.textContent='Enviando...';
+var fd=new FormData(form);
+var nombre=fd.get('nombre');
+var email=fd.get('email');
+var org=fd.get('organizacion');
+var cargo=fd.get('cargo')||'No indicado';
+var sector=fd.get('sector')||'No indicado';
+var mensaje=fd.get('mensaje')||'No indicado';
+var body='Nueva solicitud de demo SAE\n\nNombre: '+nombre+'\nEmail: '+email+'\nOrganizacion: '+org+'\nCargo: '+cargo+'\nSector: '+sector+'\n\nMensaje:\n'+mensaje;
+window.location.href='mailto:pergolesi9@gmail.com?subject='+encodeURIComponent('Solicitud demo SAE - '+org)+'&body='+encodeURIComponent(body);
+setTimeout(function(){
+document.getElementById('contactFormWrap').style.display='none';
+document.getElementById('contactSuccess').classList.add('active');
+form.reset();
+},600);
+}
 </script>
 </body></html>
